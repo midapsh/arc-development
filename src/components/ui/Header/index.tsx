@@ -3,7 +3,7 @@ import { AppBar, Toolbar } from '@material-ui/core';
 
 const Header: React.FC = () => {
   return (
-    <AppBar>
+    <AppBar position="fixed">
       <Toolbar>Arc Development</Toolbar>
     </AppBar>
   );
