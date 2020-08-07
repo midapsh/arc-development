@@ -1,5 +1,11 @@
 import React from 'react';
-import { AppBar, Toolbar, useScrollTrigger } from '@material-ui/core';
+import {
+  AppBar,
+  Toolbar,
+  Tabs,
+  Tab,
+  useScrollTrigger,
+} from '@material-ui/core';
 
 import logoIcon from '../../assets/logo.svg';
 
@@ -34,6 +40,13 @@ const Header: React.FC = () => {
               src={logoIcon}
               alt="Arc Development"
             />
+            <Tabs className={classes.tabContainer}>
+              <Tab label="Home" />
+              <Tab label="Services" />
+              <Tab label="The Revolution" />
+              <Tab label="About Us" />
+              <Tab label="Contact Us" />
+            </Tabs>
           </Toolbar>
         </AppBar>
       </ElevationScroll>

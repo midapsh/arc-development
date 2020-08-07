@@ -13,5 +13,8 @@ export const useStyles = makeStyles((theme: AugmentedTheme) =>
     logo: {
       height: '7em',
     },
+    tabContainer: {
+      marginLeft: 'auto',
+    },
   }),
 );
