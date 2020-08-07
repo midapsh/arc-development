@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import { AppBar, Toolbar, Tabs, Tab, Button } from '@material-ui/core';
 
@@ -6,11 +6,22 @@ import ElevationScroll from './ElevationScroll';
 
 import logoIcon from '../../assets/logo.svg';
 
+import { IRouteValueTotabPosition } from './types';
 import { useStyles } from './styles';
+
+const routeValueTotabPosition = {
+  '/': 0,
+  '/services': 1,
+  '/revolution': 2,
+  '/about-us': 3,
+  '/contact-us': 4,
+} as IRouteValueTotabPosition;
 
 const Header: React.FC = () => {
   const classes = useStyles();
-  const [tabPositionValue, setTabPositionValue] = useState(0);
+  const [tabPositionValue, setTabPositionValue] = useState(() => {
+    return routeValueTotabPosition[window.location.pathname];
+  });
 
   const handleTabPositionChange = useCallback(
     (
@@ -21,6 +32,10 @@ const Header: React.FC = () => {
     },
     [],
   );
+
+  useEffect(() => {
+    setTabPositionValue(routeValueTotabPosition[window.location.pathname]);
+  }, []);
 
   return (
     <>
