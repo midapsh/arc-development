@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, useLocation } from 'react-router-dom';
 import { AppBar, Toolbar, Tabs, Tab, Button } from '@material-ui/core';
 
 import ElevationScroll from './ElevationScroll';
@@ -19,8 +19,9 @@ const routeValueToTabPosition = {
 
 const Header: React.FC = () => {
   const classes = useStyles();
+  const { pathname } = useLocation();
   const [tabPositionValue, setTabPositionValue] = useState(() => {
-    return routeValueToTabPosition[window.location.pathname];
+    return routeValueToTabPosition[pathname];
   });
 
   const handleTabPositionChange = useCallback(
@@ -38,11 +39,17 @@ const Header: React.FC = () => {
       <ElevationScroll>
         <AppBar position="fixed">
           <Toolbar disableGutters>
-            <img
-              className={classes.logo}
-              src={logoIcon}
-              alt="Arc Development"
-            />
+            <Button
+              className={classes.logoContainer}
+              component={RouterLink}
+              to="/"
+            >
+              <img
+                className={classes.logo}
+                src={logoIcon}
+                alt="Arc Development"
+              />
+            </Button>
             <Tabs
               className={classes.tabContainer}
               value={tabPositionValue}

@@ -10,8 +10,12 @@ export const useStyles = makeStyles((theme: AugmentedTheme) =>
       ...theme.mixins.toolbar,
       marginBottom: '3em',
     },
+    logoContainer: {
+      padding: 0,
+      minWidth: 'unset',
+    },
     logo: {
-      height: '7em',
+      height: '8em',
     },
     tabContainer: {
       marginLeft: 'auto',
