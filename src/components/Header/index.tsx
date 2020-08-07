@@ -43,7 +43,10 @@ const Header: React.FC = () => {
     }
     return 0;
   });
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const [
+    anchorMenuElement,
+    setAnchorMenuElement,
+  ] = useState<null | HTMLElement>(null);
   const [open, setOpen] = useState(false);
 
   const handleTabPositionChange = useCallback((newTabPositionValue: number) => {
@@ -52,14 +55,14 @@ const Header: React.FC = () => {
 
   const handleMouseOver = useCallback(
     (event: MouseEvent<HTMLElement | null>) => {
-      setAnchorEl(event.currentTarget);
+      setAnchorMenuElement(event.currentTarget);
       setOpen(true);
     },
     [],
   );
 
   const handleClose = useCallback(() => {
-    setAnchorEl(null);
+    setAnchorMenuElement(null);
     setOpen(false);
   }, []);
 
@@ -98,8 +101,8 @@ const Header: React.FC = () => {
               <Tab
                 className={classes.tab}
                 value={TabNames.services}
-                aria-owns={anchorEl ? 'simple-menu' : undefined}
-                aria-haspopup={anchorEl ? 'true' : undefined}
+                aria-owns={anchorMenuElement ? 'simple-menu' : undefined}
+                aria-haspopup={anchorMenuElement ? 'true' : undefined}
                 label={routeValueToTab[TabNames.services].label}
                 component={RouterLink}
                 onMouseOver={(event: MouseEvent<HTMLElement | null>) => {
@@ -138,7 +141,9 @@ const Header: React.FC = () => {
             </Button>
             <Menu
               id="simple-menu"
-              anchorEl={anchorEl}
+              classes={{ paper: classes.menu }}
+              elevation={0}
+              anchorEl={anchorMenuElement}
               open={open}
               onClose={() => handleClose()}
               MenuListProps={{
@@ -147,6 +152,7 @@ const Header: React.FC = () => {
             >
               {/* TODO: Move down menu to let services free */}
               <MenuItem
+                classes={{ root: classes.menuItem }}
                 onClick={() => handleClose()}
                 component={RouterLink}
                 to={routeValueToTab[TabNames.services].urlLocation}
@@ -154,6 +160,7 @@ const Header: React.FC = () => {
                 {routeValueToTab[TabNames.services].label}
               </MenuItem>
               <MenuItem
+                classes={{ root: classes.menuItem }}
                 onClick={() => handleClose()}
                 component={RouterLink}
                 to={routeValueToMenu[MenuNames.customSoftware].urlLocation}
@@ -161,6 +168,7 @@ const Header: React.FC = () => {
                 {routeValueToMenu[MenuNames.customSoftware].label}
               </MenuItem>
               <MenuItem
+                classes={{ root: classes.menuItem }}
                 onClick={() => handleClose()}
                 component={RouterLink}
                 to={routeValueToMenu[MenuNames.mobileApps].urlLocation}
@@ -168,6 +176,7 @@ const Header: React.FC = () => {
                 {routeValueToMenu[MenuNames.mobileApps].label}
               </MenuItem>
               <MenuItem
+                classes={{ root: classes.menuItem }}
                 onClick={() => handleClose()}
                 component={RouterLink}
                 to={routeValueToMenu[MenuNames.websites].urlLocation}

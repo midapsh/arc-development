@@ -35,5 +35,17 @@ export const useStyles = makeStyles((theme: AugmentedTheme) =>
       marginRight: '25px',
       height: '45px',
     },
+    menu: {
+      backgroundColor: theme.customPalette.common.blue,
+      color: 'white',
+      borderRadius: 0,
+    },
+    menuItem: {
+      ...theme.customTypography.tab,
+      opacity: 0.7,
+      '&:hover': {
+        opacity: 1,
+      },
+    },
   }),
 );
