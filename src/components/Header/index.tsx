@@ -1,33 +1,12 @@
 import React, { useState, useCallback } from 'react';
-import {
-  AppBar,
-  Toolbar,
-  Tabs,
-  Tab,
-  useScrollTrigger,
-  Button,
-} from '@material-ui/core';
+import { Link as RouterLink } from 'react-router-dom';
+import { AppBar, Toolbar, Tabs, Tab, Button } from '@material-ui/core';
+
+import ElevationScroll from './ElevationScroll';
 
 import logoIcon from '../../assets/logo.svg';
 
-import { IProps } from './types';
 import { useStyles } from './styles';
-
-const ElevationScroll: React.FC<IProps> = (props: IProps) => {
-  const { children, window } = props;
-  // Note that you normally won't need to set the window ref as useScrollTrigger
-  // will default to window.
-  // This is only being set here in case you use in an iframe.
-  const trigger = useScrollTrigger({
-    disableHysteresis: true,
-    threshold: 0,
-    target: window ? window() : undefined,
-  });
-
-  return React.cloneElement(children, {
-    elevation: trigger ? 4 : 0,
-  });
-};
 
 const Header: React.FC = () => {
   const classes = useStyles();
@@ -59,11 +38,36 @@ const Header: React.FC = () => {
               onChange={handleTabPositionChange}
               indicatorColor="primary"
             >
-              <Tab className={classes.tab} label="Home" />
-              <Tab className={classes.tab} label="Services" />
-              <Tab className={classes.tab} label="The Revolution" />
-              <Tab className={classes.tab} label="About Us" />
-              <Tab className={classes.tab} label="Contact Us" />
+              <Tab
+                className={classes.tab}
+                label="Home"
+                component={RouterLink}
+                to="/"
+              />
+              <Tab
+                className={classes.tab}
+                label="Services"
+                component={RouterLink}
+                to="/services"
+              />
+              <Tab
+                className={classes.tab}
+                label="The Revolution"
+                component={RouterLink}
+                to="/revolution"
+              />
+              <Tab
+                className={classes.tab}
+                label="About Us"
+                component={RouterLink}
+                to="/about-us"
+              />
+              <Tab
+                className={classes.tab}
+                label="Contact Us"
+                component={RouterLink}
+                to="/contact-us"
+              />
             </Tabs>
             <Button
               className={classes.button}
