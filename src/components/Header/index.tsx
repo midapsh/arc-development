@@ -48,9 +48,9 @@ const Header: React.FC = () => {
             <Tabs
               className={classes.tabContainer}
               value={tabPositionValue}
-              onChange={(event, newTabPositionValue) =>
-                handleTabPositionChange(newTabPositionValue)
-              }
+              onChange={(event, newTabPositionValue) => {
+                handleTabPositionChange(newTabPositionValue);
+              }}
               indicatorColor="primary"
             >
               <Tab
