@@ -24,15 +24,9 @@ const Header: React.FC = () => {
     return routeValueToTabPosition[pathname];
   });
 
-  const handleTabPositionChange = useCallback(
-    (
-      event: React.ChangeEvent<Record<string, unknown>>,
-      newTabPositionValue: number,
-    ) => {
-      setTabPositionValue(newTabPositionValue);
-    },
-    [],
-  );
+  const handleTabPositionChange = useCallback((newTabPositionValue: number) => {
+    setTabPositionValue(newTabPositionValue);
+  }, []);
 
   return (
     <>
@@ -41,6 +35,7 @@ const Header: React.FC = () => {
           <Toolbar disableGutters>
             <Button
               className={classes.logoContainer}
+              disableRipple
               component={RouterLink}
               to="/"
             >
@@ -53,7 +48,9 @@ const Header: React.FC = () => {
             <Tabs
               className={classes.tabContainer}
               value={tabPositionValue}
-              onChange={handleTabPositionChange}
+              onChange={(event, newTabPositionValue) =>
+                handleTabPositionChange(newTabPositionValue)
+              }
               indicatorColor="primary"
             >
               <Tab

@@ -13,6 +13,9 @@ export const useStyles = makeStyles((theme: AugmentedTheme) =>
     logoContainer: {
       padding: 0,
       minWidth: 'unset',
+      '&:hover': {
+        backgroungColor: 'transparent',
+      },
     },
     logo: {
       height: '8em',
