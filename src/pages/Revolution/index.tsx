@@ -2,13 +2,13 @@ import React from 'react';
 
 import Header from '../../components/Header';
 
-const HomePage: React.FC = () => {
+const Revolution: React.FC = () => {
   return (
     <>
       <Header />
-      HomePage
+      Revolution
     </>
   );
 };
 
-export default HomePage;
+export default Revolution;

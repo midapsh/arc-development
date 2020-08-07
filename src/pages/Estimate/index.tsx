@@ -2,13 +2,13 @@ import React from 'react';
 
 import Header from '../../components/Header';
 
-const HomePage: React.FC = () => {
+const Estimate: React.FC = () => {
   return (
     <>
       <Header />
-      HomePage
+      Estimate
     </>
   );
 };
 
-export default HomePage;
+export default Estimate;

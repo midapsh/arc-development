@@ -2,13 +2,13 @@ import React from 'react';
 
 import Header from '../../components/Header';
 
-const HomePage: React.FC = () => {
+const ContactUs: React.FC = () => {
   return (
     <>
       <Header />
-      HomePage
+      ContactUs
     </>
   );
 };
 
-export default HomePage;
+export default ContactUs;
