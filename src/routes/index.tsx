@@ -10,6 +10,7 @@ import Revolution from '../pages/Revolution';
 import AboutUs from '../pages/AboutUs';
 import ContactUs from '../pages/ContactUs';
 import Estimate from '../pages/Estimate';
+import CustomSoftware from '../pages/CustomSoftware';
 
 const Routes: React.FC = () => {
   return (
@@ -24,6 +25,7 @@ const Routes: React.FC = () => {
         <Route exact path="/about-us" component={AboutUs} />
         <Route exact path="/contact-us" component={ContactUs} />
         <Route exact path="/estimate" component={Estimate} />
+        <Route exact path="/custom-software" component={CustomSoftware} />
       </Switch>
     </BrowserRouter>
   );

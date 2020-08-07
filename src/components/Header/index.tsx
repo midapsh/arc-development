@@ -14,24 +14,13 @@ import ElevationScroll from './ElevationScroll';
 
 import logoIcon from '../../assets/logo.svg';
 
-import { IRouteValueToTabItem } from './types';
+import {
+  TabNames,
+  routeValueToTab,
+  MenuNames,
+  routeValueToMenu,
+} from './constants';
 import { useStyles } from './styles';
-
-enum TabNames {
-  home,
-  services,
-  revolution,
-  aboutUs,
-  contactUs,
-}
-
-const routeValueToTab = [
-  { urlLocation: '/', label: 'Home' },
-  { urlLocation: '/services', label: 'Services' },
-  { urlLocation: '/revolution', label: 'Revolution' },
-  { urlLocation: '/about-us', label: 'About Us' },
-  { urlLocation: '/contact-us', label: 'Contact Us' },
-] as IRouteValueToTabItem[];
 
 const Header: React.FC = () => {
   const classes = useStyles();
@@ -53,10 +42,13 @@ const Header: React.FC = () => {
     setTabPositionValue(newTabPositionValue);
   }, []);
 
-  const handleClick = useCallback((event: MouseEvent<HTMLButtonElement>) => {
-    setAnchorEl(event.currentTarget);
-    setOpen(true);
-  }, []);
+  const handleMouseOver = useCallback(
+    (event: MouseEvent<HTMLElement | null>) => {
+      setAnchorEl(event.currentTarget);
+      setOpen(true);
+    },
+    [],
+  );
 
   const handleClose = useCallback(() => {
     setAnchorEl(null);
@@ -98,8 +90,13 @@ const Header: React.FC = () => {
               <Tab
                 className={classes.tab}
                 value={TabNames.services}
+                aria-owns={anchorEl ? 'simple-menu' : undefined}
+                aria-haspopup={anchorEl ? 'true' : undefined}
                 label={routeValueToTab[TabNames.services].label}
                 component={RouterLink}
+                onMouseOver={(event: MouseEvent<HTMLElement | null>) => {
+                  handleMouseOver(event);
+                }}
                 to={routeValueToTab[TabNames.services].urlLocation}
               />
               <Tab
@@ -131,6 +128,37 @@ const Header: React.FC = () => {
             >
               Free Estimate
             </Button>
+            <Menu
+              id="simple-menu"
+              anchorEl={anchorEl}
+              open={open}
+              onClose={() => handleClose()}
+              MenuListProps={{
+                onMouseLeave: () => handleClose(),
+              }}
+            >
+              <MenuItem
+                onClick={() => handleClose()}
+                component={RouterLink}
+                to={routeValueToMenu[MenuNames.customSoftware].urlLocation}
+              >
+                {routeValueToMenu[MenuNames.customSoftware].label}
+              </MenuItem>
+              <MenuItem
+                onClick={() => handleClose()}
+                component={RouterLink}
+                to={routeValueToMenu[MenuNames.mobileApps].urlLocation}
+              >
+                {routeValueToMenu[MenuNames.mobileApps].label}
+              </MenuItem>
+              <MenuItem
+                onClick={() => handleClose()}
+                component={RouterLink}
+                to={routeValueToMenu[MenuNames.websites].urlLocation}
+              >
+                {routeValueToMenu[MenuNames.websites].label}
+              </MenuItem>
+            </Menu>
           </Toolbar>
         </AppBar>
       </ElevationScroll>
