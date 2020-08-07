@@ -26,12 +26,20 @@ const Header: React.FC = () => {
   const classes = useStyles();
   const { pathname } = useLocation();
   const [tabPositionValue, setTabPositionValue] = useState(() => {
-    const location = routeValueToTab.findIndex(
+    let location = routeValueToTab.findIndex(
       ({ urlLocation }) => pathname === urlLocation,
     );
 
-    if (location >= -1) {
+    if (location > -1) {
       return location;
+    }
+
+    location = routeValueToMenu.findIndex(
+      ({ urlLocation }) => pathname === urlLocation,
+    );
+
+    if (location > -1) {
+      return TabNames.services;
     }
     return 0;
   });
