@@ -7,6 +7,7 @@ import {
 } from '@material-ui/core';
 
 import { IProps } from './types';
+import { useStyles } from './style';
 
 const ElevationScroll: React.FC<IProps> = (props: IProps) => {
   const { children, window } = props;
@@ -25,14 +26,18 @@ const ElevationScroll: React.FC<IProps> = (props: IProps) => {
 };
 
 const Header: React.FC = () => {
+  const classes = useStyles();
   return (
-    <ElevationScroll>
-      <AppBar position="fixed">
-        <Toolbar>
-          <Typography variant="h3">Arc Development</Typography>
-        </Toolbar>
-      </AppBar>
-    </ElevationScroll>
+    <>
+      <ElevationScroll>
+        <AppBar position="fixed">
+          <Toolbar>
+            <Typography variant="h3">Arc Development</Typography>
+          </Toolbar>
+        </AppBar>
+      </ElevationScroll>
+      <div className={classes.toolbarMargin} />
+    </>
   );
 };
 
