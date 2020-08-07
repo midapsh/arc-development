@@ -1,5 +1,10 @@
 import React from 'react';
-import { AppBar, Toolbar, useScrollTrigger } from '@material-ui/core';
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  useScrollTrigger,
+} from '@material-ui/core';
 
 import { IProps } from './types';
 
@@ -23,7 +28,9 @@ const Header: React.FC = () => {
   return (
     <ElevationScroll>
       <AppBar position="fixed">
-        <Toolbar>Arc Development</Toolbar>
+        <Toolbar>
+          <Typography variant="h3">Arc Development</Typography>
+        </Toolbar>
       </AppBar>
     </ElevationScroll>
   );
