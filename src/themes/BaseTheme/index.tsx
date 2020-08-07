@@ -16,6 +16,12 @@ declare module '@material-ui/core/styles/createMuiTheme' {
         fontWeight: CSSProperties['fontWeight'];
         fontSize: CSSProperties['fontSize'];
       };
+      estimate: {
+        fontFamily: CSSProperties['fontFamily'];
+        fontSize: CSSProperties['fontSize'];
+        textTransform: CSSProperties['textTransform'];
+        color: CSSProperties['color'];
+      };
     };
   }
   // allow configuration using `createMuiTheme`
@@ -32,6 +38,12 @@ declare module '@material-ui/core/styles/createMuiTheme' {
         fontFamily?: CSSProperties['fontFamily'];
         fontWeight?: CSSProperties['fontWeight'];
         fontSize?: CSSProperties['fontSize'];
+      };
+      estimate?: {
+        fontFamily?: CSSProperties['fontFamily'];
+        fontSize?: CSSProperties['fontSize'];
+        textTransform?: CSSProperties['textTransform'];
+        color?: CSSProperties['color'];
       };
     };
   }
@@ -61,6 +73,12 @@ const BaseThemeProvider = createMuiTheme({
       fontFamily: 'Raleway',
       fontWeight: 700,
       fontSize: '1rem',
+    },
+    estimate: {
+      fontFamily: 'Pacifico',
+      fontSize: '1rem',
+      textTransform: 'none',
+      color: 'white',
     },
   },
 });
