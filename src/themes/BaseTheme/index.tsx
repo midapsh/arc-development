@@ -4,8 +4,8 @@ declare module '@material-ui/core/styles/createMuiTheme' {
   interface Theme {
     customPalette: {
       common: {
-        arcBlue: string;
-        arcOrange: string;
+        blue: string;
+        orange: string;
       };
     };
   }
@@ -13,8 +13,8 @@ declare module '@material-ui/core/styles/createMuiTheme' {
   interface ThemeOptions {
     customPalette: {
       common: {
-        arcBlue: string;
-        arcOrange: string;
+        blue: string;
+        orange: string;
       };
     };
   }
@@ -34,8 +34,8 @@ const BaseThemeProvider = createMuiTheme({
   },
   customPalette: {
     common: {
-      arcBlue,
-      arcOrange,
+      blue: arcBlue,
+      orange: arcOrange,
     },
   },
 });
