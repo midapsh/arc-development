@@ -145,6 +145,14 @@ const Header: React.FC = () => {
                 onMouseLeave: () => handleClose(),
               }}
             >
+              {/* TODO: Move down menu to let services free */}
+              <MenuItem
+                onClick={() => handleClose()}
+                component={RouterLink}
+                to={routeValueToTab[TabNames.services].urlLocation}
+              >
+                {routeValueToTab[TabNames.services].label}
+              </MenuItem>
               <MenuItem
                 onClick={() => handleClose()}
                 component={RouterLink}
