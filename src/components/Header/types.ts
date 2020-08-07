@@ -1,6 +1,4 @@
-export interface IRouteValueToTab {
-  [key: string]: {
-    position: number;
-    label: string;
-  };
+export interface IRouteValueToTabItem {
+  urlLocation: string;
+  label: string;
 }

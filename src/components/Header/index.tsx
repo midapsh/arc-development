@@ -1,31 +1,66 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, MouseEvent } from 'react';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
-import { AppBar, Toolbar, Tabs, Tab, Button } from '@material-ui/core';
+import {
+  AppBar,
+  Toolbar,
+  Tabs,
+  Tab,
+  Button,
+  Menu,
+  MenuItem,
+} from '@material-ui/core';
 
 import ElevationScroll from './ElevationScroll';
 
 import logoIcon from '../../assets/logo.svg';
 
-import { IRouteValueToTab } from './types';
+import { IRouteValueToTabItem } from './types';
 import { useStyles } from './styles';
 
-const routeValueToTab = {
-  '/': { position: 0, label: 'Home' },
-  '/services': { position: 1, label: 'Services' },
-  '/revolution': { position: 2, label: 'Revolution' },
-  '/about-us': { position: 3, label: 'About Us' },
-  '/contact-us': { position: 4, label: 'Contact Us' },
-} as IRouteValueToTab;
+enum TabNames {
+  home,
+  services,
+  revolution,
+  aboutUs,
+  contactUs,
+}
+
+const routeValueToTab = [
+  { urlLocation: '/', label: 'Home' },
+  { urlLocation: '/services', label: 'Services' },
+  { urlLocation: '/revolution', label: 'Revolution' },
+  { urlLocation: '/about-us', label: 'About Us' },
+  { urlLocation: '/contact-us', label: 'Contact Us' },
+] as IRouteValueToTabItem[];
 
 const Header: React.FC = () => {
   const classes = useStyles();
   const { pathname } = useLocation();
   const [tabPositionValue, setTabPositionValue] = useState(() => {
-    return routeValueToTab[pathname].position;
+    const location = routeValueToTab.findIndex(
+      ({ urlLocation }) => pathname === urlLocation,
+    );
+
+    if (location >= -1) {
+      return location;
+    }
+    return 0;
   });
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const [open, setOpen] = useState(false);
 
   const handleTabPositionChange = useCallback((newTabPositionValue: number) => {
     setTabPositionValue(newTabPositionValue);
+  }, []);
+
+  const handleClick = useCallback((event: MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget);
+    setOpen(true);
+  }, []);
+
+  const handleClose = useCallback(() => {
+    setAnchorEl(null);
+    setOpen(false);
   }, []);
 
   return (
@@ -53,17 +88,41 @@ const Header: React.FC = () => {
               }}
               indicatorColor="primary"
             >
-              {Object.entries(routeValueToTab).map(([to, tab]) => {
-                return (
-                  <Tab
-                    key={tab.position}
-                    className={classes.tab}
-                    label={tab.label}
-                    component={RouterLink}
-                    to={to}
-                  />
-                );
-              })}
+              <Tab
+                className={classes.tab}
+                value={TabNames.home}
+                label={routeValueToTab[TabNames.home].label}
+                component={RouterLink}
+                to={routeValueToTab[TabNames.home].urlLocation}
+              />
+              <Tab
+                className={classes.tab}
+                value={TabNames.services}
+                label={routeValueToTab[TabNames.services].label}
+                component={RouterLink}
+                to={routeValueToTab[TabNames.services].urlLocation}
+              />
+              <Tab
+                className={classes.tab}
+                value={TabNames.revolution}
+                label={routeValueToTab[TabNames.revolution].label}
+                component={RouterLink}
+                to={routeValueToTab[TabNames.revolution].urlLocation}
+              />
+              <Tab
+                className={classes.tab}
+                value={TabNames.aboutUs}
+                label={routeValueToTab[TabNames.aboutUs].label}
+                component={RouterLink}
+                to={routeValueToTab[TabNames.aboutUs].urlLocation}
+              />
+              <Tab
+                className={classes.tab}
+                value={TabNames.contactUs}
+                label={routeValueToTab[TabNames.contactUs].label}
+                component={RouterLink}
+                to={routeValueToTab[TabNames.contactUs].urlLocation}
+              />
             </Tabs>
             <Button
               className={classes.button}
