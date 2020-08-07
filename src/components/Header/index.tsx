@@ -41,11 +41,11 @@ const Header: React.FC = () => {
               alt="Arc Development"
             />
             <Tabs className={classes.tabContainer}>
-              <Tab label="Home" />
-              <Tab label="Services" />
-              <Tab label="The Revolution" />
-              <Tab label="About Us" />
-              <Tab label="Contact Us" />
+              <Tab className={classes.tab} label="Home" />
+              <Tab className={classes.tab} label="Services" />
+              <Tab className={classes.tab} label="The Revolution" />
+              <Tab className={classes.tab} label="About Us" />
+              <Tab className={classes.tab} label="Contact Us" />
             </Tabs>
           </Toolbar>
         </AppBar>
