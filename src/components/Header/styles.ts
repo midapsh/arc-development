@@ -8,6 +8,10 @@ export const useStyles = makeStyles((theme: AugmentedTheme) =>
   createStyles({
     toolbarMargin: {
       ...theme.mixins.toolbar,
+      marginBottom: '3em',
+    },
+    logo: {
+      height: '7em',
     },
   }),
 );

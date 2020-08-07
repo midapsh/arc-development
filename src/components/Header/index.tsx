@@ -1,10 +1,7 @@
 import React from 'react';
-import {
-  AppBar,
-  Toolbar,
-  Typography,
-  useScrollTrigger,
-} from '@material-ui/core';
+import { AppBar, Toolbar, useScrollTrigger } from '@material-ui/core';
+
+import logoIcon from '../../assets/logo.svg';
 
 import { IProps } from './types';
 import { useStyles } from './styles';
@@ -31,8 +28,12 @@ const Header: React.FC = () => {
     <>
       <ElevationScroll>
         <AppBar position="fixed">
-          <Toolbar>
-            <Typography variant="h3">Arc Development</Typography>
+          <Toolbar disableGutters>
+            <img
+              className={classes.logo}
+              src={logoIcon}
+              alt="Arc Development"
+            />
           </Toolbar>
         </AppBar>
       </ElevationScroll>
