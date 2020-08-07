@@ -6,22 +6,22 @@ import ElevationScroll from './ElevationScroll';
 
 import logoIcon from '../../assets/logo.svg';
 
-import { IRouteValueToTabPosition } from './types';
+import { IRouteValueToTab } from './types';
 import { useStyles } from './styles';
 
-const routeValueToTabPosition = {
-  '/': 0,
-  '/services': 1,
-  '/revolution': 2,
-  '/about-us': 3,
-  '/contact-us': 4,
-} as IRouteValueToTabPosition;
+const routeValueToTab = {
+  '/': { position: 0, label: 'Home' },
+  '/services': { position: 1, label: 'Services' },
+  '/revolution': { position: 2, label: 'Revolution' },
+  '/about-us': { position: 3, label: 'About Us' },
+  '/contact-us': { position: 4, label: 'Contact Us' },
+} as IRouteValueToTab;
 
 const Header: React.FC = () => {
   const classes = useStyles();
   const { pathname } = useLocation();
   const [tabPositionValue, setTabPositionValue] = useState(() => {
-    return routeValueToTabPosition[pathname];
+    return routeValueToTab[pathname].position;
   });
 
   const handleTabPositionChange = useCallback((newTabPositionValue: number) => {
@@ -53,36 +53,17 @@ const Header: React.FC = () => {
               }}
               indicatorColor="primary"
             >
-              <Tab
-                className={classes.tab}
-                label="Home"
-                component={RouterLink}
-                to="/"
-              />
-              <Tab
-                className={classes.tab}
-                label="Services"
-                component={RouterLink}
-                to="/services"
-              />
-              <Tab
-                className={classes.tab}
-                label="The Revolution"
-                component={RouterLink}
-                to="/revolution"
-              />
-              <Tab
-                className={classes.tab}
-                label="About Us"
-                component={RouterLink}
-                to="/about-us"
-              />
-              <Tab
-                className={classes.tab}
-                label="Contact Us"
-                component={RouterLink}
-                to="/contact-us"
-              />
+              {Object.entries(routeValueToTab).map(([to, tab]) => {
+                return (
+                  <Tab
+                    key={tab.position}
+                    className={classes.tab}
+                    label={tab.label}
+                    component={RouterLink}
+                    to={to}
+                  />
+                );
+              })}
             </Tabs>
             <Button
               className={classes.button}
