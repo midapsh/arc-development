@@ -7,7 +7,7 @@ import {
 } from '@material-ui/core';
 
 import { IProps } from './types';
-import { useStyles } from './style';
+import { useStyles } from './styles';
 
 const ElevationScroll: React.FC<IProps> = (props: IProps) => {
   const { children, window } = props;
