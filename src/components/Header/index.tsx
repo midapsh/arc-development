@@ -57,6 +57,7 @@ const Header: React.FC = () => {
               className={classes.tabContainer}
               value={tabPositionValue}
               onChange={handleTabPositionChange}
+              indicatorColor="primary"
             >
               <Tab className={classes.tab} label="Home" />
               <Tab className={classes.tab} label="Services" />
