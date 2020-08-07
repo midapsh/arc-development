@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useCallback } from 'react';
 import {
   AppBar,
   Toolbar,
@@ -31,6 +31,18 @@ const ElevationScroll: React.FC<IProps> = (props: IProps) => {
 
 const Header: React.FC = () => {
   const classes = useStyles();
+  const [tabPositionValue, setTabPositionValue] = useState(0);
+
+  const handleTabPositionChange = useCallback(
+    (
+      event: React.ChangeEvent<Record<string, unknown>>,
+      newTabPositionValue: number,
+    ) => {
+      setTabPositionValue(newTabPositionValue);
+    },
+    [],
+  );
+
   return (
     <>
       <ElevationScroll>
@@ -41,7 +53,11 @@ const Header: React.FC = () => {
               src={logoIcon}
               alt="Arc Development"
             />
-            <Tabs className={classes.tabContainer}>
+            <Tabs
+              className={classes.tabContainer}
+              value={tabPositionValue}
+              onChange={handleTabPositionChange}
+            >
               <Tab className={classes.tab} label="Home" />
               <Tab className={classes.tab} label="Services" />
               <Tab className={classes.tab} label="The Revolution" />
