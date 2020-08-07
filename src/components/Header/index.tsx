@@ -5,6 +5,7 @@ import {
   Tabs,
   Tab,
   useScrollTrigger,
+  Button,
 } from '@material-ui/core';
 
 import logoIcon from '../../assets/logo.svg';
@@ -47,6 +48,13 @@ const Header: React.FC = () => {
               <Tab className={classes.tab} label="About Us" />
               <Tab className={classes.tab} label="Contact Us" />
             </Tabs>
+            <Button
+              className={classes.button}
+              variant="contained"
+              color="secondary"
+            >
+              Free Estimate
+            </Button>
           </Toolbar>
         </AppBar>
       </ElevationScroll>
