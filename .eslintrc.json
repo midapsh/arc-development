@@ -39,6 +39,14 @@
 				]
 			}
 		],
+		"react/prop-types": [
+			2,
+			{
+				"ignore": [
+					"children"
+				]
+			}
+		],
 		"import/prefer-default-export": "off",
 		"import/extensions": [
 			"error",

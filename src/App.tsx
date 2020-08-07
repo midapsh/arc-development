@@ -1,16 +1,18 @@
 import React from 'react';
 
-import { CssBaseline } from '@material-ui/core';
+import GlobalStyleProvider from './styles/global';
+import BaseThemeProvider from './themes';
 
 import Header from './components/ui/Header';
 
 const App: React.FC = () => {
   return (
-    <>
-      <CssBaseline />
-      <Header />
-      Hello
-    </>
+    <GlobalStyleProvider>
+      <BaseThemeProvider>
+        <Header />
+        Hello
+      </BaseThemeProvider>
+    </GlobalStyleProvider>
   );
 };
 
