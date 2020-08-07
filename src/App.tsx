@@ -1,12 +1,16 @@
 import React from 'react';
+
+import { CssBaseline } from '@material-ui/core';
+
 import Header from './components/ui/Header';
 
 const App: React.FC = () => {
   return (
-    <div className="App">
+    <>
+      <CssBaseline />
       <Header />
       Hello
-    </div>
+    </>
   );
 };
 
