@@ -16,5 +16,10 @@ export const useStyles = makeStyles((theme: AugmentedTheme) =>
     tabContainer: {
       marginLeft: 'auto',
     },
+    tab: {
+      ...theme.customTypography.tab,
+      minWidth: 10,
+      marginLeft: '25px',
+    },
   }),
 );
