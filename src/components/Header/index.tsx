@@ -48,6 +48,7 @@ const Header: React.FC = () => {
     setAnchorMenuElement,
   ] = useState<null | HTMLElement>(null);
   const [openMenu, setOpenMenu] = useState(false);
+
   const selectedIndex = useMemo(() => {
     const location = routeValueToMenu.findIndex(
       ({ urlLocation }) => pathname === urlLocation,
