@@ -20,7 +20,7 @@ import {
   MenuNames,
   routeValueToMenu,
 } from './constants';
-import { useStyles } from './styles';
+import { useStyles, NO_ELEVATION } from './styles';
 
 const Header: React.FC = () => {
   const classes = useStyles();
@@ -149,7 +149,7 @@ const Header: React.FC = () => {
             <Menu
               id="simple-menu"
               classes={{ paper: classes.menu }}
-              elevation={0}
+              elevation={NO_ELEVATION}
               anchorEl={anchorMenuElement}
               open={openMenu}
               onClose={() => handleClose()}
