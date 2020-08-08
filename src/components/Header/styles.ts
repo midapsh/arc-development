@@ -10,7 +10,13 @@ export const useStyles = makeStyles((theme: AugmentedTheme) =>
   createStyles({
     toolbarMargin: {
       ...theme.mixins.toolbar,
-      marginBottom: '3em',
+      marginBottom: '4em',
+      [theme.breakpoints.down('md')]: {
+        marginBottom: '3em',
+      },
+      [theme.breakpoints.down('xs')]: {
+        marginBottom: '2em',
+      },
     },
     logoContainer: {
       padding: 0,
@@ -21,6 +27,12 @@ export const useStyles = makeStyles((theme: AugmentedTheme) =>
     },
     logo: {
       height: '8em',
+      [theme.breakpoints.down('md')]: {
+        height: '7em',
+      },
+      [theme.breakpoints.down('xs')]: {
+        height: '5.5em',
+      },
     },
     tabContainer: {
       marginLeft: 'auto',
