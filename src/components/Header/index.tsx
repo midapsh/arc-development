@@ -1,4 +1,4 @@
-import React, { useState, useCallback, MouseEvent, useEffect } from 'react';
+import React, { useState, useCallback, MouseEvent, useMemo } from 'react';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
 import {
   AppBar,
@@ -48,13 +48,13 @@ const Header: React.FC = () => {
     setAnchorMenuElement,
   ] = useState<null | HTMLElement>(null);
   const [openMenu, setOpenMenu] = useState(false);
-  const [selectedIndex, setSelectedIndex] = useState(() => {
+  const selectedIndex = useMemo(() => {
     const location = routeValueToMenu.findIndex(
       ({ urlLocation }) => pathname === urlLocation,
     );
 
     return location;
-  });
+  }, [pathname]);
 
   const handleTabPositionChange = useCallback((newTabPositionValue: number) => {
     setTabPositionValue(newTabPositionValue);
@@ -72,13 +72,6 @@ const Header: React.FC = () => {
     setAnchorMenuElement(null);
     setOpenMenu(false);
   }, []);
-
-  useEffect(() => {
-    const location = routeValueToMenu.findIndex(
-      ({ urlLocation }) => pathname === urlLocation,
-    );
-    setSelectedIndex(location);
-  }, [pathname]);
 
   return (
     <>
