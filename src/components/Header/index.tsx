@@ -1,4 +1,4 @@
-import React, { useState, useCallback, MouseEvent } from 'react';
+import React, { useState, useCallback, MouseEvent, useEffect } from 'react';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
 import {
   AppBar,
@@ -72,6 +72,13 @@ const Header: React.FC = () => {
     setAnchorMenuElement(null);
     setOpenMenu(false);
   }, []);
+
+  useEffect(() => {
+    const location = routeValueToMenu.findIndex(
+      ({ urlLocation }) => pathname === urlLocation,
+    );
+    setSelectedIndex(location);
+  }, [pathname]);
 
   return (
     <>
