@@ -47,7 +47,14 @@ const Header: React.FC = () => {
     anchorMenuElement,
     setAnchorMenuElement,
   ] = useState<null | HTMLElement>(null);
-  const [open, setOpen] = useState(false);
+  const [openMenu, setOpenMenu] = useState(false);
+  const [selectedIndex, setSelectedIndex] = useState(() => {
+    const location = routeValueToMenu.findIndex(
+      ({ urlLocation }) => pathname === urlLocation,
+    );
+
+    return location;
+  });
 
   const handleTabPositionChange = useCallback((newTabPositionValue: number) => {
     setTabPositionValue(newTabPositionValue);
@@ -56,14 +63,14 @@ const Header: React.FC = () => {
   const handleMouseOver = useCallback(
     (event: MouseEvent<HTMLElement | null>) => {
       setAnchorMenuElement(event.currentTarget);
-      setOpen(true);
+      setOpenMenu(true);
     },
     [],
   );
 
   const handleClose = useCallback(() => {
     setAnchorMenuElement(null);
-    setOpen(false);
+    setOpenMenu(false);
   }, []);
 
   return (
@@ -144,7 +151,7 @@ const Header: React.FC = () => {
               classes={{ paper: classes.menu }}
               elevation={0}
               anchorEl={anchorMenuElement}
-              open={open}
+              open={openMenu}
               onClose={() => handleClose()}
               MenuListProps={{
                 onMouseLeave: () => handleClose(),
@@ -153,6 +160,9 @@ const Header: React.FC = () => {
               {/* TODO: Move down menu to let services free */}
               <MenuItem
                 classes={{ root: classes.menuItem }}
+                selected={
+                  tabPositionValue === TabNames.services && selectedIndex === -1
+                }
                 onClick={() => handleClose()}
                 component={RouterLink}
                 to={routeValueToTab[TabNames.services].urlLocation}
@@ -161,6 +171,7 @@ const Header: React.FC = () => {
               </MenuItem>
               <MenuItem
                 classes={{ root: classes.menuItem }}
+                selected={selectedIndex === MenuNames.customSoftware}
                 onClick={() => handleClose()}
                 component={RouterLink}
                 to={routeValueToMenu[MenuNames.customSoftware].urlLocation}
@@ -169,6 +180,7 @@ const Header: React.FC = () => {
               </MenuItem>
               <MenuItem
                 classes={{ root: classes.menuItem }}
+                selected={selectedIndex === MenuNames.mobileApps}
                 onClick={() => handleClose()}
                 component={RouterLink}
                 to={routeValueToMenu[MenuNames.mobileApps].urlLocation}
@@ -177,6 +189,7 @@ const Header: React.FC = () => {
               </MenuItem>
               <MenuItem
                 classes={{ root: classes.menuItem }}
+                selected={selectedIndex === MenuNames.websites}
                 onClick={() => handleClose()}
                 component={RouterLink}
                 to={routeValueToMenu[MenuNames.websites].urlLocation}
