@@ -25,7 +25,14 @@ import { useStyles, NO_ELEVATION } from './styles';
 const Header: React.FC = () => {
   const classes = useStyles();
   const { pathname } = useLocation();
-  const [tabPositionValue, setTabPositionValue] = useState(() => {
+
+  const [
+    anchorMenuElement,
+    setAnchorMenuElement,
+  ] = useState<null | HTMLElement>(null);
+  const [openMenu, setOpenMenu] = useState(false);
+
+  const tabPositionValue = useMemo(() => {
     let location = routeValueToTab.findIndex(
       ({ urlLocation }) => pathname === urlLocation,
     );
@@ -42,12 +49,7 @@ const Header: React.FC = () => {
       return TabNames.services;
     }
     return 0;
-  });
-  const [
-    anchorMenuElement,
-    setAnchorMenuElement,
-  ] = useState<null | HTMLElement>(null);
-  const [openMenu, setOpenMenu] = useState(false);
+  }, [pathname]);
 
   const selectedIndex = useMemo(() => {
     const location = routeValueToMenu.findIndex(
@@ -56,10 +58,6 @@ const Header: React.FC = () => {
 
     return location;
   }, [pathname]);
-
-  const handleTabPositionChange = useCallback((newTabPositionValue: number) => {
-    setTabPositionValue(newTabPositionValue);
-  }, []);
 
   const handleMouseOver = useCallback(
     (event: MouseEvent<HTMLElement | null>) => {
@@ -94,9 +92,6 @@ const Header: React.FC = () => {
             <Tabs
               className={classes.tabContainer}
               value={tabPositionValue}
-              onChange={(event, newTabPositionValue) => {
-                handleTabPositionChange(newTabPositionValue);
-              }}
               indicatorColor="primary"
             >
               <Tab
