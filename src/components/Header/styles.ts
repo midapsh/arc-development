@@ -8,6 +8,9 @@ export const NO_ELEVATION = 0;
 
 export const useStyles = makeStyles((theme: AugmentedTheme) =>
   createStyles({
+    appbar: {
+      zIndex: theme.zIndex.modal + 1,
+    },
     toolbarMargin: {
       ...theme.mixins.toolbar,
       marginBottom: '4em',

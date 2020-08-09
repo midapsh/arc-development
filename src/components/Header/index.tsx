@@ -234,6 +234,7 @@ const Header: React.FC = () => {
         onClose={() => setOpenDrawer(false)}
         onOpen={() => setOpenDrawer(true)}
       >
+        <div className={classes.toolbarMargin} />
         <List disablePadding>
           <ListItem
             component={RouterLink}
@@ -356,7 +357,7 @@ const Header: React.FC = () => {
   return (
     <>
       <ElevationScroll>
-        <AppBar position="fixed">
+        <AppBar className={classes.appbar} position="fixed">
           <Toolbar disableGutters>
             <Button
               className={classes.logoContainer}
