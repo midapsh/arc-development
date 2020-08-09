@@ -33,7 +33,7 @@ import {
   ListNames,
   routeValueToList,
 } from './constants';
-import { useStyles, NO_ELEVATION } from './styles';
+import { useStyles, NO_ELEVATION, MENU_STYLES } from './styles';
 
 const Header: React.FC = () => {
   const classes = useStyles();
@@ -173,6 +173,7 @@ const Header: React.FC = () => {
       <Menu
         id="simple-menu"
         classes={{ paper: classes.menu }}
+        style={MENU_STYLES}
         elevation={NO_ELEVATION}
         anchorEl={anchorMenuElement}
         open={openMenu}

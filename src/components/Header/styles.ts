@@ -5,9 +5,11 @@ import {
 } from '@material-ui/core/styles';
 
 export const NO_ELEVATION = 0;
+export const MENU_STYLES = { zIndex: 0 };
 
-export const useStyles = makeStyles((theme: AugmentedTheme) =>
-  createStyles({
+export const useStyles = makeStyles((theme: AugmentedTheme) => {
+  MENU_STYLES.zIndex = theme.zIndex.modal + 2;
+  return createStyles({
     appbar: {
       zIndex: theme.zIndex.modal + 1,
     },
@@ -88,5 +90,5 @@ export const useStyles = makeStyles((theme: AugmentedTheme) =>
     drawerItemSelected: {
       opacity: 1,
     },
-  }),
-);
+  });
+});
