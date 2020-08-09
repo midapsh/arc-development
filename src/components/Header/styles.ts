@@ -61,5 +61,15 @@ export const useStyles = makeStyles((theme: AugmentedTheme) =>
         opacity: 1,
       },
     },
+    drawerIconContainer: {
+      marginLeft: 'auto',
+      '&:hover': {
+        backgroundColor: 'transparent',
+      },
+    },
+    drawerIcon: {
+      height: '50px',
+      width: '50px',
+    },
   }),
 );

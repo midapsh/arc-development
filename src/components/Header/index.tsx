@@ -9,7 +9,10 @@ import {
   Menu,
   MenuItem,
   useMediaQuery,
+  SwipeableDrawer,
+  IconButton,
 } from '@material-ui/core';
+import MenuIcon from '@material-ui/icons/Menu';
 
 import { useTheme } from '@material-ui/core/styles';
 import ElevationScroll from './ElevationScroll';
@@ -35,6 +38,7 @@ const Header: React.FC = () => {
     setAnchorMenuElement,
   ] = useState<null | HTMLElement>(null);
   const [openMenu, setOpenMenu] = useState(false);
+  const [openDrawer, setOpenDrawer] = useState(false);
 
   const tabPositionValue = useMemo(() => {
     let location = routeValueToTab.findIndex(
@@ -62,6 +66,18 @@ const Header: React.FC = () => {
 
     return location;
   }, [pathname]);
+
+  const isBrowser = useCallback(() => {
+    const hasWindow = () => {
+      return typeof window !== 'undefined';
+    };
+
+    return hasWindow();
+  }, []);
+
+  const iOS = useMemo(() => {
+    return isBrowser() && /iPad|iPhone|iPod/.test(navigator.userAgent);
+  }, [isBrowser]);
 
   const handleMouseOver = useCallback(
     (event: MouseEvent<HTMLElement | null>) => {
@@ -181,6 +197,27 @@ const Header: React.FC = () => {
     </>
   );
 
+  const NavigationDrawer = (
+    <>
+      <SwipeableDrawer
+        disableBackdropTransition={!iOS}
+        disableDiscovery={iOS}
+        open={openDrawer}
+        onClose={() => setOpenDrawer(false)}
+        onOpen={() => setOpenDrawer(true)}
+      >
+        Example Drawer
+      </SwipeableDrawer>
+      <IconButton
+        className={classes.drawerIconContainer}
+        disableRipple
+        onClick={() => setOpenDrawer(previousState => !previousState)}
+      >
+        <MenuIcon className={classes.drawerIcon} />
+      </IconButton>
+    </>
+  );
+
   return (
     <>
       <ElevationScroll>
@@ -198,7 +235,7 @@ const Header: React.FC = () => {
                 alt="Arc Development"
               />
             </Button>
-            {matches ? null : NavigationTabs}
+            {matches ? NavigationDrawer : NavigationTabs}
           </Toolbar>
         </AppBar>
       </ElevationScroll>
