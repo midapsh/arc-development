@@ -76,7 +76,7 @@ const Header: React.FC = () => {
     setOpenMenu(false);
   }, []);
 
-  const tabs = (
+  const NavigationTabs = (
     <>
       <Tabs
         className={classes.tabContainer}
@@ -198,7 +198,7 @@ const Header: React.FC = () => {
                 alt="Arc Development"
               />
             </Button>
-            {matches ? null : tabs}
+            {matches ? null : NavigationTabs}
           </Toolbar>
         </AppBar>
       </ElevationScroll>
