@@ -11,10 +11,16 @@ import {
   useMediaQuery,
   SwipeableDrawer,
   IconButton,
+  List,
+  ListItem,
+  ListItemText,
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 
 import { useTheme } from '@material-ui/core/styles';
+
+import clsx from 'clsx';
+
 import ElevationScroll from './ElevationScroll';
 
 import logoIcon from '../../assets/logo.svg';
@@ -24,6 +30,8 @@ import {
   routeValueToTab,
   MenuNames,
   routeValueToMenu,
+  ListNames,
+  routeValueToList,
 } from './constants';
 import { useStyles, NO_ELEVATION } from './styles';
 
@@ -42,6 +50,25 @@ const Header: React.FC = () => {
 
   const tabPositionValue = useMemo(() => {
     let location = routeValueToTab.findIndex(
+      ({ urlLocation }) => pathname === urlLocation,
+    );
+
+    if (location > -1) {
+      return location;
+    }
+
+    location = routeValueToMenu.findIndex(
+      ({ urlLocation }) => pathname === urlLocation,
+    );
+
+    if (location > -1) {
+      return TabNames.services;
+    }
+    return 0;
+  }, [pathname]);
+
+  const listPositionValue = useMemo(() => {
+    let location = routeValueToList.findIndex(
       ({ urlLocation }) => pathname === urlLocation,
     );
 
@@ -100,43 +127,43 @@ const Header: React.FC = () => {
         indicatorColor="primary"
       >
         <Tab
+          component={RouterLink}
           className={classes.tab}
           value={TabNames.home}
           label={routeValueToTab[TabNames.home].label}
-          component={RouterLink}
           to={routeValueToTab[TabNames.home].urlLocation}
         />
         <Tab
+          component={RouterLink}
           className={classes.tab}
           value={TabNames.services}
           aria-owns={anchorMenuElement ? 'simple-menu' : undefined}
           aria-haspopup={anchorMenuElement ? 'true' : undefined}
           label={routeValueToTab[TabNames.services].label}
-          component={RouterLink}
           onMouseOver={(event: MouseEvent<HTMLElement | null>) => {
             handleMouseOver(event);
           }}
           to={routeValueToTab[TabNames.services].urlLocation}
         />
         <Tab
+          component={RouterLink}
           className={classes.tab}
           value={TabNames.revolution}
           label={routeValueToTab[TabNames.revolution].label}
-          component={RouterLink}
           to={routeValueToTab[TabNames.revolution].urlLocation}
         />
         <Tab
+          component={RouterLink}
           className={classes.tab}
           value={TabNames.aboutUs}
           label={routeValueToTab[TabNames.aboutUs].label}
-          component={RouterLink}
           to={routeValueToTab[TabNames.aboutUs].urlLocation}
         />
         <Tab
+          component={RouterLink}
           className={classes.tab}
           value={TabNames.contactUs}
           label={routeValueToTab[TabNames.contactUs].label}
-          component={RouterLink}
           to={routeValueToTab[TabNames.contactUs].urlLocation}
         />
       </Tabs>
@@ -200,13 +227,121 @@ const Header: React.FC = () => {
   const NavigationDrawer = (
     <>
       <SwipeableDrawer
+        classes={{ paper: classes.drawer }}
         disableBackdropTransition={!iOS}
         disableDiscovery={iOS}
         open={openDrawer}
         onClose={() => setOpenDrawer(false)}
         onOpen={() => setOpenDrawer(true)}
       >
-        Example Drawer
+        <List disablePadding>
+          <ListItem
+            component={RouterLink}
+            selected={listPositionValue === ListNames.home}
+            button
+            divider
+            to={routeValueToList[ListNames.home].urlLocation}
+            onClick={() => setOpenDrawer(false)}
+          >
+            <ListItemText
+              className={clsx(classes.drawerItemText, {
+                [classes.drawerItemSelected]:
+                  listPositionValue === ListNames.home,
+              })}
+              disableTypography
+            >
+              {routeValueToList[ListNames.home].label}
+            </ListItemText>
+          </ListItem>
+          <ListItem
+            component={RouterLink}
+            selected={listPositionValue === ListNames.services}
+            button
+            to={routeValueToList[ListNames.services].urlLocation}
+            onClick={() => setOpenDrawer(false)}
+          >
+            <ListItemText
+              className={clsx(classes.drawerItemText, {
+                [classes.drawerItemSelected]:
+                  listPositionValue === ListNames.services,
+              })}
+              disableTypography
+            >
+              {routeValueToList[ListNames.services].label}
+            </ListItemText>
+          </ListItem>
+          <ListItem
+            component={RouterLink}
+            selected={listPositionValue === ListNames.revolution}
+            button
+            to={routeValueToList[ListNames.revolution].urlLocation}
+            onClick={() => setOpenDrawer(false)}
+          >
+            <ListItemText
+              className={clsx(classes.drawerItemText, {
+                [classes.drawerItemSelected]:
+                  listPositionValue === ListNames.revolution,
+              })}
+              disableTypography
+            >
+              {routeValueToList[ListNames.revolution].label}
+            </ListItemText>
+          </ListItem>
+          <ListItem
+            component={RouterLink}
+            selected={listPositionValue === ListNames.aboutUs}
+            button
+            to={routeValueToList[ListNames.aboutUs].urlLocation}
+            onClick={() => setOpenDrawer(false)}
+          >
+            <ListItemText
+              className={clsx(classes.drawerItemText, {
+                [classes.drawerItemSelected]:
+                  listPositionValue === ListNames.aboutUs,
+              })}
+              disableTypography
+            >
+              {routeValueToList[ListNames.aboutUs].label}
+            </ListItemText>
+          </ListItem>
+          <ListItem
+            component={RouterLink}
+            selected={listPositionValue === ListNames.contactUs}
+            button
+            divider
+            to={routeValueToList[ListNames.contactUs].urlLocation}
+            onClick={() => setOpenDrawer(false)}
+          >
+            <ListItemText
+              className={clsx(classes.drawerItemText, {
+                [classes.drawerItemSelected]:
+                  listPositionValue === ListNames.contactUs,
+              })}
+              disableTypography
+            >
+              {routeValueToList[ListNames.contactUs].label}
+            </ListItemText>
+          </ListItem>
+
+          <ListItem
+            component={RouterLink}
+            selected={listPositionValue === ListNames.freeEstimate}
+            className={classes.drawerItemEstimate}
+            button
+            to={routeValueToList[ListNames.freeEstimate].urlLocation}
+            onClick={() => setOpenDrawer(false)}
+          >
+            <ListItemText
+              className={clsx(classes.drawerItemText, {
+                [classes.drawerItemSelected]:
+                  listPositionValue === ListNames.freeEstimate,
+              })}
+              disableTypography
+            >
+              {routeValueToList[ListNames.freeEstimate].label}
+            </ListItemText>
+          </ListItem>
+        </List>
       </SwipeableDrawer>
       <IconButton
         className={classes.drawerIconContainer}

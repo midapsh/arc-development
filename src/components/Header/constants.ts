@@ -1,4 +1,8 @@
-import { IRouteValueToTabItem, IRouteValueToMenuItem } from './types';
+import {
+  IRouteValueToTabItem,
+  IRouteValueToMenuItem,
+  IRouteValueToListItem,
+} from './types';
 
 export enum TabNames {
   home,
@@ -27,3 +31,21 @@ export const routeValueToMenu = [
   { urlLocation: '/mobile-apps', label: 'Mobile App Development' },
   { urlLocation: '/web-sites', label: 'Website Development' },
 ] as IRouteValueToMenuItem[];
+
+export enum ListNames {
+  home,
+  services,
+  revolution,
+  aboutUs,
+  contactUs,
+  freeEstimate,
+}
+
+export const routeValueToList = [
+  { urlLocation: '/', label: 'Home' },
+  { urlLocation: '/services', label: 'Services' },
+  { urlLocation: '/revolution', label: 'Revolution' },
+  { urlLocation: '/about-us', label: 'About Us' },
+  { urlLocation: '/contact-us', label: 'Contact Us' },
+  { urlLocation: '/estimate', label: 'Free Estimate' },
+] as IRouteValueToListItem[];

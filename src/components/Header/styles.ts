@@ -61,6 +61,9 @@ export const useStyles = makeStyles((theme: AugmentedTheme) =>
         opacity: 1,
       },
     },
+    drawer: {
+      backgroundColor: theme.customPalette.common.blue,
+    },
     drawerIconContainer: {
       marginLeft: 'auto',
       '&:hover': {
@@ -70,6 +73,17 @@ export const useStyles = makeStyles((theme: AugmentedTheme) =>
     drawerIcon: {
       height: '50px',
       width: '50px',
+    },
+    drawerItemText: {
+      ...theme.customTypography.tab,
+      color: 'white',
+      opacity: 0.7,
+    },
+    drawerItemEstimate: {
+      backgroundColor: theme.customPalette.common.orange,
+    },
+    drawerItemSelected: {
+      opacity: 1,
     },
   }),
 );
