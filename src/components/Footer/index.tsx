@@ -4,6 +4,9 @@ import { Link as RouterLink } from 'react-router-dom';
 import { Grid, Hidden } from '@material-ui/core';
 
 import footerAdornmentImage from '../../assets/Footer Adornment.svg';
+import facebookIcon from '../../assets/facebook.svg';
+import twitterIcon from '../../assets/twitter.svg';
+import instagramIcon from '../../assets/instagram.svg';
 
 import {
   routeValueToFirstGrid,
@@ -119,6 +122,40 @@ const Footer: React.FC = () => {
         src={footerAdornmentImage}
         alt="Black Decorative"
       />
+      <Grid
+        container
+        className={classes.socialContainer}
+        justify="flex-end"
+        spacing={2}
+      >
+        <Grid
+          item
+          component="a"
+          href="https://www.facebook.com/"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <img src={facebookIcon} alt="facebook" className={classes.icon} />
+        </Grid>
+        <Grid
+          item
+          component="a"
+          href="https://twitter.com/"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <img src={twitterIcon} alt="twitter" className={classes.icon} />
+        </Grid>
+        <Grid
+          item
+          component="a"
+          href="https://www.instagram.com/"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <img src={instagramIcon} alt="instagram" className={classes.icon} />
+        </Grid>
+      </Grid>
     </footer>
   );
 };
