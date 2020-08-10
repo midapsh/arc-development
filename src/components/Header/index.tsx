@@ -25,6 +25,8 @@ import ElevationScroll from './ElevationScroll';
 
 import logoIcon from '../../assets/logo.svg';
 
+import { routeNameToPath } from '../../routes/constants';
+
 import {
   TabNames,
   routeValueToTab,
@@ -364,7 +366,7 @@ const Header: React.FC = () => {
               className={classes.logoContainer}
               disableRipple
               component={RouterLink}
-              to="/"
+              to={routeNameToPath.homePage.path}
             >
               <img
                 className={classes.logo}

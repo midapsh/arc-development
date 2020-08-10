@@ -1,3 +1,5 @@
+import { routeNameToPath } from '../../routes/constants';
+
 import {
   IRouteValueToTabItem,
   IRouteValueToMenuItem,
@@ -13,11 +15,11 @@ export enum TabNames {
 }
 
 export const routeValueToTab = [
-  { urlLocation: '/', label: 'Home' },
-  { urlLocation: '/services', label: 'Services' },
-  { urlLocation: '/revolution', label: 'Revolution' },
-  { urlLocation: '/about-us', label: 'About Us' },
-  { urlLocation: '/contact-us', label: 'Contact Us' },
+  { urlLocation: routeNameToPath.homePage.path, label: 'Home' },
+  { urlLocation: routeNameToPath.services.path, label: 'Services' },
+  { urlLocation: routeNameToPath.revolution.path, label: 'Revolution' },
+  { urlLocation: routeNameToPath.aboutUs.path, label: 'About Us' },
+  { urlLocation: routeNameToPath.contactUs.path, label: 'Contact Us' },
 ] as IRouteValueToTabItem[];
 
 export enum MenuNames {
@@ -27,9 +29,15 @@ export enum MenuNames {
 }
 
 export const routeValueToMenu = [
-  { urlLocation: '/custom-software', label: 'Custom Software Development' },
-  { urlLocation: '/mobile-apps', label: 'Mobile App Development' },
-  { urlLocation: '/web-sites', label: 'Website Development' },
+  {
+    urlLocation: routeNameToPath.customSoftware.path,
+    label: 'Custom Software Development',
+  },
+  {
+    urlLocation: routeNameToPath.mobileApps.path,
+    label: 'Mobile App Development',
+  },
+  { urlLocation: routeNameToPath.webSites.path, label: 'Website Development' },
 ] as IRouteValueToMenuItem[];
 
 export enum ListNames {
@@ -42,10 +50,10 @@ export enum ListNames {
 }
 
 export const routeValueToList = [
-  { urlLocation: '/', label: 'Home' },
-  { urlLocation: '/services', label: 'Services' },
-  { urlLocation: '/revolution', label: 'Revolution' },
-  { urlLocation: '/about-us', label: 'About Us' },
-  { urlLocation: '/contact-us', label: 'Contact Us' },
-  { urlLocation: '/estimate', label: 'Free Estimate' },
+  { urlLocation: routeNameToPath.homePage.path, label: 'Home' },
+  { urlLocation: routeNameToPath.services.path, label: 'Services' },
+  { urlLocation: routeNameToPath.revolution.path, label: 'Revolution' },
+  { urlLocation: routeNameToPath.aboutUs.path, label: 'About Us' },
+  { urlLocation: routeNameToPath.contactUs.path, label: 'Contact Us' },
+  { urlLocation: routeNameToPath.estimate.path, label: 'Free Estimate' },
 ] as IRouteValueToListItem[];

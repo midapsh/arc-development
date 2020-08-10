@@ -22,5 +22,15 @@ export const useStyles = makeStyles((theme: AugmentedTheme) => {
         width: '15em',
       },
     },
+    mainContainer: {
+      position: 'absolute',
+    },
+    link: {
+      color: 'white',
+      fontFamily: 'Arial',
+      fontSize: '0.75rem',
+      fontWeight: 'bold',
+      textDecoration: 'none',
+    },
   });
 });

@@ -1,14 +1,7 @@
 import React from 'react';
 
-import Header from '../../components/Header';
-
 const Sevices: React.FC = () => {
-  return (
-    <>
-      <Header />
-      Sevices
-    </>
-  );
+  return <>Sevices</>;
 };
 
 export default Sevices;

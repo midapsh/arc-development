@@ -1,3 +1,4 @@
-export interface dummy {
-  dummy: boolean;
+export interface IRouteValueToGridItem {
+  urlLocation: string;
+  label: string;
 }

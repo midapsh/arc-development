@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 import HomePage from '../pages/HomePage';
 
@@ -12,22 +12,38 @@ import ContactUs from '../pages/ContactUs';
 import Estimate from '../pages/Estimate';
 import CustomSoftware from '../pages/CustomSoftware';
 
+import { routeNameToPath } from './constants';
+
 const Routes: React.FC = () => {
   return (
-    <BrowserRouter>
-      <Switch>
-        <Route exact path="/" component={HomePage} />
+    <Switch>
+      <Route exact path={routeNameToPath.homePage.path} component={HomePage} />
 
-        <Route exact path="/services" component={Services} />
-        <Route exact path="/mobile-apps" component={MobileApps} />
-        <Route exact path="/web-sites" component={WebSites} />
-        <Route exact path="/revolution" component={Revolution} />
-        <Route exact path="/about-us" component={AboutUs} />
-        <Route exact path="/contact-us" component={ContactUs} />
-        <Route exact path="/estimate" component={Estimate} />
-        <Route exact path="/custom-software" component={CustomSoftware} />
-      </Switch>
-    </BrowserRouter>
+      <Route exact path={routeNameToPath.services.path} component={Services} />
+      <Route
+        exact
+        path={routeNameToPath.mobileApps.path}
+        component={MobileApps}
+      />
+      <Route exact path={routeNameToPath.webSites.path} component={WebSites} />
+      <Route
+        exact
+        path={routeNameToPath.revolution.path}
+        component={Revolution}
+      />
+      <Route exact path={routeNameToPath.aboutUs.path} component={AboutUs} />
+      <Route
+        exact
+        path={routeNameToPath.contactUs.path}
+        component={ContactUs}
+      />
+      <Route exact path={routeNameToPath.estimate.path} component={Estimate} />
+      <Route
+        exact
+        path={routeNameToPath.customSoftware.path}
+        component={CustomSoftware}
+      />
+    </Switch>
   );
 };
 
