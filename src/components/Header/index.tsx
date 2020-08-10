@@ -33,7 +33,7 @@ import {
   ListNames,
   routeValueToList,
 } from './constants';
-import { useStyles, NO_ELEVATION, MENU_STYLES } from './styles';
+import { useStyles, NO_ELEVATION } from './styles';
 
 const Header: React.FC = () => {
   const classes = useStyles();

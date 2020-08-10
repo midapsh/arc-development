@@ -7,7 +7,7 @@ const HomePage: React.FC = () => {
   return (
     <>
       <Header />
-      HomePage
+      <div style={{ height: 685 }}>HomePage</div>
       <Footer />
     </>
   );
