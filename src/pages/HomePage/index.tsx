@@ -1,8 +1,14 @@
 import React from 'react';
 
-import LandingPage from '../../components/LandingPage';
+import { Grid } from '@material-ui/core';
+
+import LandingPage from './LandingPage';
+
+import { dummy } from './types';
+import { useStyles } from './styles';
 
 const HomePage: React.FC = () => {
+  const classes = useStyles();
   return (
     <>
       <div style={{ height: 685 }}>

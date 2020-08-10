@@ -1,4 +1,4 @@
-import landingAnimation from '../../animations/landingAnimation';
+import landingAnimation from '../../../animations/landingAnimation';
 
 export const defaultOptions = {
   loop: true,
