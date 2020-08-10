@@ -172,8 +172,8 @@ const Header: React.FC = () => {
       </Button>
       <Menu
         id="simple-menu"
-        classes={{ paper: classes.menu }}
-        style={MENU_STYLES}
+        className={classes.menu}
+        classes={{ paper: classes.menuPaper }}
         elevation={NO_ELEVATION}
         anchorEl={anchorMenuElement}
         open={openMenu}
