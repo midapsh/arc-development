@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 
-import { Grid } from '@material-ui/core';
+import { Grid, Hidden } from '@material-ui/core';
 
 import footerAdornmentImage from '../../assets/Footer Adornment.svg';
 
@@ -20,98 +20,100 @@ const Footer: React.FC = () => {
 
   return (
     <footer className={classes.footer}>
-      <Grid
-        container
-        className={classes.mainContainer}
-        justify="center"
-        spacing={10}
-      >
-        <Grid item>
-          <Grid container direction="column" spacing={columnSpacing}>
-            {routeValueToFirstGrid.map(({ urlLocation, label }) => {
-              return (
-                <Grid
-                  key={label}
-                  item
-                  className={classes.link}
-                  component={RouterLink}
-                  to={urlLocation}
-                >
-                  {label}
-                </Grid>
-              );
-            })}
+      <Hidden mdDown>
+        <Grid
+          container
+          className={classes.mainContainer}
+          justify="center"
+          spacing={10}
+        >
+          <Grid item>
+            <Grid container direction="column" spacing={columnSpacing}>
+              {routeValueToFirstGrid.map(({ urlLocation, label }) => {
+                return (
+                  <Grid
+                    key={label}
+                    item
+                    className={classes.link}
+                    component={RouterLink}
+                    to={urlLocation}
+                  >
+                    {label}
+                  </Grid>
+                );
+              })}
+            </Grid>
+          </Grid>
+          <Grid item>
+            <Grid container direction="column" spacing={columnSpacing}>
+              {routeValueToSecondGrid.map(({ urlLocation, label }) => {
+                return (
+                  <Grid
+                    key={label}
+                    item
+                    className={classes.link}
+                    component={RouterLink}
+                    to={urlLocation}
+                  >
+                    {label}
+                  </Grid>
+                );
+              })}
+            </Grid>
+          </Grid>
+          <Grid item>
+            <Grid container direction="column" spacing={columnSpacing}>
+              {routeValueToThirdGrid.map(({ urlLocation, label }) => {
+                return (
+                  <Grid
+                    key={label}
+                    item
+                    className={classes.link}
+                    component={RouterLink}
+                    to={urlLocation}
+                  >
+                    {label}
+                  </Grid>
+                );
+              })}
+            </Grid>
+          </Grid>
+          <Grid item>
+            <Grid container direction="column" spacing={columnSpacing}>
+              {routeValueToFourthGrid.map(({ urlLocation, label }) => {
+                return (
+                  <Grid
+                    key={label}
+                    item
+                    className={classes.link}
+                    component={RouterLink}
+                    to={urlLocation}
+                  >
+                    {label}
+                  </Grid>
+                );
+              })}
+            </Grid>
+          </Grid>
+          <Grid item>
+            <Grid container direction="column" spacing={columnSpacing}>
+              {routeValueToFifthGrid.map(({ urlLocation, label }) => {
+                return (
+                  <Grid
+                    key={label}
+                    item
+                    className={classes.link}
+                    component={RouterLink}
+                    to={urlLocation}
+                  >
+                    {label}
+                  </Grid>
+                );
+              })}
+            </Grid>
           </Grid>
         </Grid>
-        <Grid item>
-          <Grid container direction="column" spacing={columnSpacing}>
-            {routeValueToSecondGrid.map(({ urlLocation, label }) => {
-              return (
-                <Grid
-                  key={label}
-                  item
-                  className={classes.link}
-                  component={RouterLink}
-                  to={urlLocation}
-                >
-                  {label}
-                </Grid>
-              );
-            })}
-          </Grid>
-        </Grid>
-        <Grid item>
-          <Grid container direction="column" spacing={columnSpacing}>
-            {routeValueToThirdGrid.map(({ urlLocation, label }) => {
-              return (
-                <Grid
-                  key={label}
-                  item
-                  className={classes.link}
-                  component={RouterLink}
-                  to={urlLocation}
-                >
-                  {label}
-                </Grid>
-              );
-            })}
-          </Grid>
-        </Grid>
-        <Grid item>
-          <Grid container direction="column" spacing={columnSpacing}>
-            {routeValueToFourthGrid.map(({ urlLocation, label }) => {
-              return (
-                <Grid
-                  key={label}
-                  item
-                  className={classes.link}
-                  component={RouterLink}
-                  to={urlLocation}
-                >
-                  {label}
-                </Grid>
-              );
-            })}
-          </Grid>
-        </Grid>
-        <Grid item>
-          <Grid container direction="column" spacing={columnSpacing}>
-            {routeValueToFifthGrid.map(({ urlLocation, label }) => {
-              return (
-                <Grid
-                  key={label}
-                  item
-                  className={classes.link}
-                  component={RouterLink}
-                  to={urlLocation}
-                >
-                  {label}
-                </Grid>
-              );
-            })}
-          </Grid>
-        </Grid>
-      </Grid>
+      </Hidden>
       <img
         className={classes.footerAdornment}
         src={footerAdornmentImage}
