@@ -13,13 +13,13 @@ export const useStyles = makeStyles((theme: AugmentedTheme) => {
       position: 'relative',
     },
     footerAdornment: {
-      width: '25em',
+      width: '22em',
       verticalAlign: 'bottom',
       [theme.breakpoints.down('md')]: {
-        width: '21em',
+        width: '18em',
       },
       [theme.breakpoints.down('xs')]: {
-        width: '15em',
+        width: '14em',
       },
     },
     mainContainer: {
