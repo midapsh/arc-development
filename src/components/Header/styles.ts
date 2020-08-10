@@ -5,8 +5,10 @@ import {
 } from '@material-ui/core/styles';
 
 export const NO_ELEVATION = 0;
+export const MENU_STYLE = { zIndex: -1 };
 
 export const useStyles = makeStyles((theme: AugmentedTheme) => {
+  MENU_STYLE.zIndex = theme.zIndex.modal + 2;
   return createStyles({
     appbar: {
       zIndex: theme.zIndex.modal + 1,
@@ -51,10 +53,6 @@ export const useStyles = makeStyles((theme: AugmentedTheme) => {
       marginLeft: '50px',
       marginRight: '25px',
       height: '45px',
-    },
-    menu: {
-      zIndex: theme.zIndex.modal + 2,
-      position: 'relative',
     },
     menuPaper: {
       backgroundColor: theme.customPalette.common.blue,

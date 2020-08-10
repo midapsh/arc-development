@@ -35,7 +35,7 @@ import {
   ListNames,
   routeValueToList,
 } from './constants';
-import { useStyles, NO_ELEVATION } from './styles';
+import { useStyles, NO_ELEVATION, MENU_STYLE } from './styles';
 
 const Header: React.FC = () => {
   const classes = useStyles();
@@ -174,7 +174,7 @@ const Header: React.FC = () => {
       </Button>
       <Menu
         id="simple-menu"
-        className={classes.menu}
+        style={MENU_STYLE}
         classes={{ paper: classes.menuPaper }}
         elevation={NO_ELEVATION}
         anchorEl={anchorMenuElement}
