@@ -20,9 +20,11 @@ const LandingPage: React.FC = () => {
               <br />
               to the Midwest
             </Typography>
-            <Grid container>
+            <Grid container justify="center">
               <Grid item>
-                <Button variant="contained">Free Estimate</Button>
+                <Button className={classes.estimateButton} variant="contained">
+                  Free Estimate
+                </Button>
               </Grid>
               <Grid item>
                 <Button variant="outlined">

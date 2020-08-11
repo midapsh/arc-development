@@ -330,14 +330,17 @@ const Header: React.FC = () => {
           <ListItem
             component={RouterLink}
             selected={listPositionValue === ListNames.freeEstimate}
-            className={classes.drawerItemEstimate}
+            classes={{
+              root: classes.drawerItemEstimate,
+              selected: classes.drawerItemEstimateSelected,
+            }}
             button
             to={routeValueToList[ListNames.freeEstimate].urlLocation}
             onClick={() => setOpenDrawer(false)}
           >
             <ListItemText
               className={clsx(classes.drawerItemText, {
-                [classes.drawerItemSelected]:
+                [classes.drawerItemEstimateSelected]:
                   listPositionValue === ListNames.freeEstimate,
               })}
               disableTypography

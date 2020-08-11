@@ -12,5 +12,16 @@ export const useStyles = makeStyles((theme: AugmentedTheme) => {
       marginTop: '2em',
       marginLeft: '10%',
     },
+    estimateButton: {
+      ...theme.customTypography.estimate,
+      backgroundColor: theme.palette.secondary.main,
+      borderRadius: 50,
+      height: 45,
+      width: 145,
+      marginRight: 40,
+      '&:hover': {
+        backgroundColor: theme.palette.secondary.light,
+      },
+    },
   });
 });

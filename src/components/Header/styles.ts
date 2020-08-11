@@ -53,6 +53,9 @@ export const useStyles = makeStyles((theme: AugmentedTheme) => {
       marginLeft: '50px',
       marginRight: '25px',
       height: '45px',
+      '&:hover': {
+        backgroundColor: theme.palette.secondary.light,
+      },
     },
     menuPaper: {
       backgroundColor: theme.customPalette.common.blue,
@@ -84,11 +87,31 @@ export const useStyles = makeStyles((theme: AugmentedTheme) => {
       color: 'white',
       opacity: 0.7,
     },
-    drawerItemEstimate: {
-      backgroundColor: theme.customPalette.common.orange,
-    },
     drawerItemSelected: {
       opacity: 1,
+    },
+    drawerItemEstimate: {
+      backgroundColor: theme.customPalette.common.orange,
+      '&:hover, &:focus': {
+        backgroundColor: theme.palette.secondary.dark,
+      },
+      '&.Mui-selected': {
+        opacity: 0.7,
+        color: theme.palette.secondary.dark,
+        '&:hover, &:focus': {
+          backgroundColor: theme.palette.secondary.dark,
+        },
+      },
+    },
+    drawerItemEstimateSelected: {
+      opacity: 1,
+      '&.Mui-selected': {
+        opacity: 0.7,
+        backgroundColor: theme.customPalette.common.orange,
+        '&:hover, &:focus': {
+          backgroundColor: theme.palette.secondary.dark,
+        },
+      },
     },
   });
 });
