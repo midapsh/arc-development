@@ -2,7 +2,7 @@ import React from 'react';
 
 import Lottie from 'react-lottie';
 import { Grid, Button, Typography } from '@material-ui/core';
-import { red } from '@material-ui/core/colors';
+import { useTheme } from '@material-ui/core/styles';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 
 import { defaultOptions } from './constants';
@@ -10,29 +10,34 @@ import { useStyles } from './styles';
 
 const LandingPage: React.FC = () => {
   const classes = useStyles();
+  const theme = useTheme();
   return (
-    <Grid container direction="column">
+    <Grid container className={classes.mainContainer} direction="column">
       <Grid item>
         <Grid container direction="row" justify="flex-end" alignItems="center">
-          <Grid sm item>
+          <Grid sm item className={classes.heroTextContainer}>
             <Typography variant="h2" align="center">
               Bringing West Coast Tecnology
               <br />
               to the Midwest
             </Typography>
-            <Grid container justify="center">
+            <Grid
+              container
+              className={classes.buttonContainer}
+              justify="center"
+            >
               <Grid item>
                 <Button className={classes.estimateButton} variant="contained">
                   Free Estimate
                 </Button>
               </Grid>
               <Grid item>
-                <Button variant="outlined">
+                <Button className={classes.learnButtonHero} variant="outlined">
                   Learn More
                   <ArrowForwardIcon
                     width={30}
                     height={30}
-                    style={{ color: red[500] }}
+                    style={{ color: theme.palette.primary.main }}
                   />
                 </Button>
               </Grid>
